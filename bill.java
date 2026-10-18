@@ -9,6 +9,16 @@ public class ItemBill {
        System.out.print("Enter the price of item 3: ");
        double item3 = input.nextDouble();
        double total = item1 + item2 + item3;
+      System.out.print("Enter coupon code (or NONE): ");
+       String coupon = input.next();
+       double couponDiscount = 0;
+       if (coupon.equalsIgnoreCase("SAVE5")) {
+           // Coupon discount cannot exceed the remaining bill.
+           couponDiscount = Math.min(5, total - discount);
+           System.out.println("Coupon applied successfully!");
+       } else if (!coupon.equalsIgnoreCase("NONE")) {
+           System.out.println("Invalid coupon code.");
+       }
        System.out.printf("Total bill: %.2f\n", total);
        input.close();
    }
